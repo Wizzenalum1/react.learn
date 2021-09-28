@@ -30,8 +30,8 @@ class CartItem extends React.Component {
     // this.state.qty++;
     // this.updateQuntity();
 
+    console.log("print ",this);
     this.setState({ qty: this.state.qty + 1 });
-    console.log('increase', this.state);
   }
   decreaseQuntity() {
     // the abobve function no need because set state is used in the react.
@@ -54,9 +54,9 @@ class CartItem extends React.Component {
     this.setState({ qty: this.state.qty + 1 });
     console.log('deleted after action', this.state.qty);
   };
-  testing = () => {
-    //this proves that set state behave like syncronous in case of promises and ajax request.
-    let { qty } = this.state;
+  testing = () => { // to use this testing click on delete icon
+    //setState() is asynchronous function but some time behave like synchronous in case of promises and ajax request.
+    // let { qty } = this.state;
     // // case 1 if object setState is used then due to bacthing effect ony last value is effective.
     // console.log("before 1 set",qty);
     // this.setState({qty:11})
@@ -74,16 +74,18 @@ class CartItem extends React.Component {
     // this.setState(prevState=>{ return {qty:prevState.qty+7}},()=>{console.log("third callback",this.state.qty)});
     // console.log("last",qty);
 
-    //case 3 if setStete done in sitde the setstate in object and function boths.
+    // case 3 here function set qty as 40 then render again and qty increase by 10 more.
     // console.log("start ",this.state.qty)
 
     // this.setState(prevState=>{return {qty:40}},()=>{
-    //     console.log("from before in call back",this.state.qty)
-    //     this.setState({qty:10})
+    //   let value = this.state.qty;
+    //   console.log("before in call back",value)
+    //     this.setState({qty:value+10})
     //     console.log("after in call back",this.state.qty)
     // })
     // console.log("end ",this.state.qty)
-    // case 4 if functional setstate is provided as callback in setstate fucntion.
+    // case 4 if functional setstate is provided as callback in setstate fucntion
+    // same thing will happen as happend in 3 case.
     // console.log("start ",this.state.qty)
 
     // this.setState(prevState=>{return {qty:40}},()=>{
@@ -92,7 +94,7 @@ class CartItem extends React.Component {
     //     console.log("after in call back",this.state.qty)
     // })
     // console.log("end ",this.state.qty)
-    // find differenct in case 4 ad this
+    // find difference in case 4 ad current case
     // console.log("start ",this.state.qty)
 
     // this.setState(prevState=>{return {qty:40}},()=>{
@@ -125,6 +127,7 @@ class CartItem extends React.Component {
     //   }
     // );
     // console.log('end ', this.state.qty);
+    // their is no binding issue because react handles it.
 
     // // in promises this.setState() work like synchronous ad batching is not occures
     // const promise = new Promise((resolve,reject)=>{
@@ -136,7 +139,6 @@ class CartItem extends React.Component {
     //     this.setState({qty:this.state.qty+10});
     //     this.setState({qty:this.state.qty+10});
     //     this.setState({qty:this.state.qty+10});
-    //     console.log('state',this.state)
     // })
   };
   render() {
@@ -158,7 +160,7 @@ class CartItem extends React.Component {
               alt="increse"
               className="action-icons"
               src="https://image.flaticon.com/icons/png/512/1828/1828926.png"
-              onClick={this.increaseQuntity.bind(this)}
+              onClick={this.increaseQuntity}
             />
             <img
               alt="decrese"

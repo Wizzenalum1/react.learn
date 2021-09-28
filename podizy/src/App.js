@@ -153,6 +153,7 @@ class App extends Component {
     //     this.setState({scrolling:false});
     //   }
     // })
+    // https://docs.google.com/document/d/1BV9ek7XDSFGiVVvV_iZ3nmJNknrs3WG1b2tfjkP5XNg/edit
   }
 
   render() {
